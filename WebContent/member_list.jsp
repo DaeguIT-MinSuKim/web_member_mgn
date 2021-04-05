@@ -27,7 +27,10 @@
 		<td>${member.age }</td>
 		<td>${member.gender }</td>
 		<td>${member.email }</td>
-		<td><a href="deleteMember?id=${member.id}">삭제</a></td>
+		<td>
+			<a href="updateMember?id=${member.id}">수정</a>&nbsp;
+			<a href="deleteMember?id=${member.id}">삭제</a>
+		</td>
 	</tr>
 	</c:forEach>
 </table>

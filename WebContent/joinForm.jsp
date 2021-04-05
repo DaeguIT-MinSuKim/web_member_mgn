@@ -30,10 +30,10 @@
 		</td>
 	</tr>
 	<tr>
-		<td><label for = "gender1"></label>성별 : </td>
+		<td><label for = "gender"></label>성별 : </td>
 		<td>
-			<input type="radio" name="gender" value="남" id = "gender1" checked/>남자
-			<input type="radio" name="gender" value="여" id = "gender2"/>여자
+			<input type="radio" name="gender" value="남" id = "gender" checked/>남자
+			<input type="radio" name="gender" value="여" id = "gender"/>여자
 		</td>
 	</tr>
 	<tr>

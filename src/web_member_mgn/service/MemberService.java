@@ -14,6 +14,10 @@ public class MemberService {
 		dao.setCon(JndiDS.getConnection());
 	}
 	
+	public Member searchMember(Member member) {
+		return dao.selectMember(member);
+	}
+	
 	public Member loginMember(Member member) {
 		return dao.selectMemberById(member);
 	}
@@ -28,5 +32,9 @@ public class MemberService {
 	
 	public void removeMember(Member member) {
 		dao.deleteMember(member);
+	}
+	
+	public void modifyMember(Member member) {
+		dao.updateMember(member);
 	}
 }

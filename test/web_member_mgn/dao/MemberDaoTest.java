@@ -34,7 +34,7 @@ public class MemberDaoTest {
 
 	@Test
 	public void test1SelectMemberByIdSuccess() {
-		System.out.println("testSelectMemberById()-Success");
+		System.out.println("test1SelectMemberByIdSuccess()-Success");
 		Member member = new Member("1", "1111");
 		Member memberLogin = dao.selectMemberById(member);
 		System.out.println("memberLogin : " + memberLogin);
@@ -43,7 +43,7 @@ public class MemberDaoTest {
 
 	@Test
 	public void test2SelectMemberByIdFail() {
-		System.out.println("testSelectMemberById()-Fail");
+		System.out.println("test2SelectMemberByIdFail()-Fail");
 		Member member = new Member("1", "1112");
 		Member memberLogin = dao.selectMemberById(member);
 		System.out.println("memberLogin : " + memberLogin);
@@ -51,18 +51,29 @@ public class MemberDaoTest {
 		Assert.assertNull(memberLogin);
 	}
 	
-//	@Test
+	@Test
 	public void test3InsertMember() {
-		System.out.println("testInsertMember()");
+		System.out.println("test3InsertMember()");
 		Member member = new Member("test3", "1111", "test3", 20, "남자", "test3@test.co.kr");
 		dao.insertMember(member);
 		
 		Member memberLogin = dao.selectMemberById(member);
 		Assert.assertNotNull(memberLogin);
 	}
+	@Test
+	public void test4updateMember() {
+		System.out.println("test4updateMember()");
+		Member member = dao.selectMember(new Member("test3"));
+		member.setAge(100);
+		dao.updateMember(member);
+		
+		Member updateMember = dao.selectMemberById(member);
+		Assert.assertNull(updateMember);
+	}
 	
 	@Test
-	public void test4RemoveMember() {
+	public void test5RemoveMember() {
+		System.out.println("test5RemoveMember()");
 		Member member = new Member("test3");
 		dao.deleteMember(member);
 		
@@ -71,7 +82,7 @@ public class MemberDaoTest {
 	}
 	
 	@Test
-	public void test5ListMember() {
+	public void test6ListMember() {
 		System.out.println("testListMember()");
 		List<Member> list = dao.selectMemberByAll();
 		Assert.assertNotNull(list);

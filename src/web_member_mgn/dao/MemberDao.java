@@ -9,4 +9,6 @@ public interface MemberDao {
 	int insertMember(Member member);
 	List<Member> selectMemberByAll();
 	void deleteMember(Member member);
+	Member selectMember(Member member);
+	void updateMember(Member member);
 }

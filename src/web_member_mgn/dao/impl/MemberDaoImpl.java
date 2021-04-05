@@ -104,4 +104,40 @@ public class MemberDaoImpl implements MemberDao {
 
 	}
 
+	@Override
+	public Member selectMember(Member member) {
+		String sql = "select id, name, age, gender, email from member "
+				+ "  where id = ? ";
+		try (PreparedStatement pstmt = con.prepareStatement(sql);) {
+			pstmt.setString(1, member.getId());
+			
+			try (ResultSet rs = pstmt.executeQuery();){
+				if (rs.next()) {
+					return getMember(rs);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public void updateMember(Member member) {
+		//id, name, age, gender, email
+		String sql = "update member "
+				   + "   set name=?, age=?, gender=?, email=?"
+				   + " where id = ?";
+		try (PreparedStatement pstmt = con.prepareStatement(sql)){
+			pstmt.setString(1, member.getName());
+			pstmt.setInt(2, member.getAge());
+			pstmt.setString(3, member.getGender());
+			pstmt.setString(4, member.getEmail());
+			pstmt.setString(5, member.getId());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 }
