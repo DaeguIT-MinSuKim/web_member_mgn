@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import web_member_mgn.dao.MemberDao;
 import web_member_mgn.dto.Member;
@@ -69,6 +71,37 @@ public class MemberDaoImpl implements MemberDao {
 		}
 		return 0;
 		
+	}
+
+	@Override
+	public List<Member> selectMemberByAll() {
+		String sql = "select id, name, age, gender, email from member "
+				+    "where id != 'admin'";
+		try (PreparedStatement pstmt = con.prepareStatement(sql);
+				ResultSet rs = pstmt.executeQuery()) {
+			List<Member> list = new ArrayList<Member>();
+			while(rs.next()) {
+				list.add(getMember(rs));
+			}
+			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public void deleteMember(Member member) {
+		//(1, password('1111'), '김상건', 40, '여자', 'test@test.co.kr');
+		String sql = "delete from member "
+	              +  "where id = ?";
+		try (PreparedStatement pstmt = con.prepareStatement(sql)){
+			pstmt.setString(1, member.getId());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 }

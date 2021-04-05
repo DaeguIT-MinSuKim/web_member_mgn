@@ -1,4 +1,4 @@
-select * from member;
+select id, passwd, name, age, gender, email from member;
 
 desc member;
 

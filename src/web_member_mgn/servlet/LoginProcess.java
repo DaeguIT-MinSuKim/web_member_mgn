@@ -29,7 +29,7 @@ public class LoginProcess extends HttpServlet {
 		System.out.printf("loginMember : %s %n result : %s%n", loginMember, result);
 		if (result != null) {
 			HttpSession session = request.getSession();
-			session.setAttribute("id", result.getId());
+			session.setAttribute("member", result);
 			request.getRequestDispatcher("main.jsp").forward(request, response);
 		}else {
 			request.getRequestDispatcher("loginForm.jsp").forward(request, response);
