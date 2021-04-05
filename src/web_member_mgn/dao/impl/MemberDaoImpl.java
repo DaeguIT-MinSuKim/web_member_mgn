@@ -29,6 +29,8 @@ public class MemberDaoImpl implements MemberDao {
 			pstmt.setString(1, member.getId());
 			pstmt.setString(2, member.getPasswd());
 			
+//			System.out.println(pstmt);
+			
 			try (ResultSet rs = pstmt.executeQuery();){
 				if (rs.next()) {
 					return getMember(rs);

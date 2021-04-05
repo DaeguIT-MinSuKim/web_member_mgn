@@ -9,3 +9,5 @@ insert into member values
 select id, name, age, gender, email 
   from member 
  where id = 1 and passwd = password('1111');
+ 
+select id, name, age, gender, email    from member   where id = '1' and passwd = password('1111')

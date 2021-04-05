@@ -1,19 +1,14 @@
 package web_member_mgn.dao;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.Properties;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import web_member_mgn.JdbcUtil;
 import web_member_mgn.dao.impl.MemberDaoImpl;
-import web_member_mgn.ds.JndiDS;
 import web_member_mgn.dto.Member;
 
 public class MemberDaoTest {
@@ -23,7 +18,7 @@ public class MemberDaoTest {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		//MemberDaoTest.java 가 수행되기 전 호출
-		con = getConnection();
+		con = JdbcUtil.getConnection();
 	}
 
 	@Before
@@ -52,16 +47,5 @@ public class MemberDaoTest {
 		Assert.assertNull(memberLogin);
 	}
 	
-	private static Connection getConnection() {
-		Connection con = null;
-		try{
-			String url = "jdbc:mysql://localhost:3306/native_jdbc?useSSL=false";
-			String id = "user_native_jdbc";
-			String passwd = "rootroot";
-			con = DriverManager.getConnection(url, id, passwd);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return con;
-	}
+	
 }
