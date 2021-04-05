@@ -51,4 +51,24 @@ public class MemberDaoImpl implements MemberDao {
 		return new Member(id, name, age, gender, email);
 	}
 
+	@Override
+	public int insertMember(Member member) {
+		//(1, password('1111'), '김상건', 40, '여자', 'test@test.co.kr');
+		String sql = "insert into member values "
+	              +  "(?, password(?), ?, ?, ?, ?)";
+		try (PreparedStatement pstmt = con.prepareStatement(sql)){
+			pstmt.setString(1, member.getId());
+			pstmt.setString(2, member.getPasswd());
+			pstmt.setString(3, member.getName());
+			pstmt.setInt(4, member.getAge());
+			pstmt.setString(5, member.getGender());
+			pstmt.setString(6, member.getEmail());
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+		
+	}
+
 }

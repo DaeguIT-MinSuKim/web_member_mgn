@@ -47,5 +47,13 @@ public class MemberDaoTest {
 		Assert.assertNull(memberLogin);
 	}
 	
-	
+	@Test
+	public void testInsertMember() {
+		System.out.println("testInsertMember()");
+		Member member = new Member("test3", "1111", "test3", 20, "남자", "test3@test.co.kr");
+		dao.insertMember(member);
+		
+		Member memberLogin = dao.selectMemberById(member);
+		Assert.assertNotNull(memberLogin);
+	}
 }

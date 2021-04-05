@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="css/loginForm.css">
 </head>
 <body>
-<form name="loginform" action="loginProcess" method="get">
+<form name="loginform" action="loginProcess" method="post">
 <table>
 	<tr>
 		<td colspan="2" class = "td_title">

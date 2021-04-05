@@ -25,6 +25,16 @@ public class Member {
 		this.email = email;
 	}
 
+	//회원 가입을 위한 DTO
+	public Member(String id, String passwd, String name, int age, String gender, String email) {
+		this.id = id;
+		this.passwd = passwd;
+		this.name = name;
+		this.age = age;
+		this.gender = gender;
+		this.email = email;
+	}
+
 	public String getId() {
 		return id;
 	}
