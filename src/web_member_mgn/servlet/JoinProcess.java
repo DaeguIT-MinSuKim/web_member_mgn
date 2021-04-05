@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import web_member_mgn.dto.Member;
 import web_member_mgn.service.MemberService;
@@ -21,6 +22,11 @@ public class JoinProcess extends HttpServlet {
 			Member joinMember = getMember(request);
 			System.out.println("joinMember >> " + joinMember);
 			service.joinMember(joinMember);
+			HttpSession session = request.getSession();
+			Member member = (Member)session.getAttribute("member");
+			if (member.getId().equals("admin")) {
+				request.getRequestDispatcher("memberList").forward(request, response);
+			}
 			response.sendRedirect("loginForm.jsp");
 		}catch (RuntimeException e) {
 			request.getRequestDispatcher("joinForm.jsp").forward(request, response);

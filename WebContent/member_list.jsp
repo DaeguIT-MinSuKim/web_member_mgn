@@ -32,6 +32,6 @@
 	</c:forEach>
 </table>
 <a href="main.jsp">메인으로</a>&nbsp;&nbsp;
-<a href="addMember">회원 추가하기</a>
+<a href="joinForm.jsp">회원 추가하기</a>
 </body>
 </html>
