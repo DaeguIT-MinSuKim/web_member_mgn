@@ -29,12 +29,11 @@ public class UpdateProcess extends HttpServlet {
 		Member member = null;
 		try {
 			String id = request.getParameter("id").trim();
-			String passwd = request.getParameter("pass").trim();
 			String name = request.getParameter("name").trim();
 			int age = Integer.parseInt(request.getParameter("age").trim());
 			String gender = request.getParameter("gender").trim();
 			String email = request.getParameter("email").trim();
-			member = new Member(id, passwd, name, age, gender, email);
+			member = new Member(id, name, age, gender, email);
 		}catch (Exception e) {
 			throw new RuntimeException();
 		}

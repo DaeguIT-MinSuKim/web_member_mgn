@@ -18,10 +18,6 @@
 		<td><input type="text" name="id" id = "id" value="${update_member.id}" readonly/></td>
 	</tr>
 	<tr>
-		<td><label for = "pass">비밀번호 : </label></td>
-		<td><input type="password" name="pass" id = "pass"/></td>
-	</tr>
-	<tr>
 		<td><label for = "name">이름 : </label></td>
 		<td><input type="text" name="name" id = "name" value="${update_member.name}"/></td>
 	</tr>
